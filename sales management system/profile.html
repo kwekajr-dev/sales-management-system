@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="profile-card">
+        <div class="profile-pic">
+            <img src="product/profile1.jpeg" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="Moses" readonly>
+            </div>
+            <div class="field">
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" value="kweka" readonly>
+            </div>
+            <div class="field">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" value="kwekamoses47@aumail.com" readonly>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" value="********" readonly>
+            </div>
+            <div class="field">
+                <label for="birthday">Birthday</label>
+                <input type="text" id="birthday" value="14/07/2026" readonly>
+            </div>
+            <div class="gender">
+                <input type="radio" id="male" name="gender" value="male" checked disabled>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" disabled>
+                <label for="female">Female</label>
+            </div>
+            <div class="prof">
+                <button type="button" id="editButton">Edit</button>
+                <button type="button" id="saveButton" style="display: none;">Save</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/profile.js"></script>
+</body>
+</html>

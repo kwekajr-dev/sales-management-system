@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #222;
+            color: #eee;
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #111;
+            padding: 20px;
+            width: 200px;
+            border-radius: 5px;
+        }
+        .sidebar h2 {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            padding: 10px 0;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        .main {
+            flex: 1;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        .main h3 {
+            color: #eee;
+        }
+        .user-list {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .user-list th, .user-list td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        .user-list th {
+            background-color: #555;
+        }
+        .user-list td {
+            background-color: #444;
+        }
+        .user-actions button {
+            background-color: blue;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .user-actions button:hover {
+            background-color: rgb(240, 17, 17);
+        }
+        .form-container {
+            margin-top: 20px;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: rgb(240, 17, 17);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>ADMIN DASHBOARD</h2>
+            <ul>
+                <li><a href="admin.html">Home</a></li>
+                <li><a href="manage.html">Manage Users</a></li>
+                <li><a href="product.html">Manage Products</a></li>
+                <li><a href="manageOrder.html">Manage Orders</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="login.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>Manage Users</h3>
+            <table class="user-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>moses kweka</td>
+                        <td>kwekamoses47@gmail.com</td>
+                        <td class="user-actions">
+                            <button class="delete">Delete</button>
+                            <button class="update">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>jackline meza</td>
+                        <td>jasmah912@gmail.com</td>
+                        <td class="user-actions">
+                            <button class="delete">Delete</button>
+                            <button class="update">Update</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>christina raphael</td>
+                        <td>christina377@gmail.com</td>
+                        <td class="user-actions">
+                            <button class="delete">Delete</button>
+                            <button class="update">Update</button>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+            <div class="form-container">
+                <h3>Create New Account</h3>
+                <form id="create-account-form">
+                    <input type="text" id="new-username" placeholder="Username" required>
+                    <input type="email" id="new-email" placeholder="Email" required>
+                    <input type="password" id="new-password" placeholder="Password" required>
+                    <button type="submit">Create Account</button>
+                </form>
+            </div>
+
+            <div class="form-container">
+                <h3>Update Account</h3>
+                <form id="update-account-form">
+                    <input type="hidden" id="update-id">
+                    <input type="text" id="update-username" placeholder="Username" required>
+                    <input type="email" id="update-email" placeholder="Email" required>
+                    <button type="submit">Update Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const createForm = document.getElementById('create-account-form');
+            const updateForm = document.getElementById('update-account-form');
+            
+            createForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Add logic to create a new user account
+                alert('Account created successfully!');
+            });
+
+            updateForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Add logic to update the user account
+                alert('Account updated successfully!');
+            });
+
+            const deleteButtons = document.querySelectorAll('.delete');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Add logic to delete the user account
+                    alert('Account deleted successfully!');
+                });
+            });
+
+            const updateButtons = document.querySelectorAll('.update');
+            updateButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Populate the update form with user data
+                    const row = this.closest('tr');
+                    document.getElementById('update-id').value = row.cells[0].textContent;
+                    document.getElementById('update-username').value = row.cells[1].textContent;
+                    document.getElementById('update-email').value = row.cells[2].textContent;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

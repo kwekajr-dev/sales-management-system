@@ -1,0 +1,59 @@
+.container{
+    width:fit-content;
+    height: fit-content;
+    background: slategray;
+    padding: 20px;
+    margin-left:40px;;
+    display:relative;
+    border-radius:12px;
+    box-shadow: 5px 5px 5px;
+}
+input{
+    font-size:25px;
+    border-radius:10px;
+}
+button{
+    font-size:20px;
+    background:blue;
+    color: white;
+    border-radius: 10px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom:5px;
+    padding-top:5px;
+}
+label{
+    font-size: 22px;
+}
+h1{
+    font-size:22px;
+    color:#000000;
+}
+html{
+    background:#000000;
+}
+img{
+    margin-left:500px;
+    margin-top:-600px;
+    height:500px;
+    padding-top:-22px;
+    
+   
+}
+.tufa{
+    border:2px;
+    height:fit-content;
+    width:1300px;
+    background:white;
+    margin-top:10px;
+    padding:10px;
+    text-align:center;
+    padding-left:-10px;
+    color:black;
+    font-weight: bold;
+}
+.para{
+    font-size:20px;
+    color:white;
+    text-align:center;
+}

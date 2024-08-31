@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #222;
+            color: #eee;
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #111;
+            padding: 20px;
+            width: 200px;
+            border-radius: 5px;
+        }
+        .sidebar h2 {
+            margin-top: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            padding: 10px 0;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        .main {
+            flex: 1;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        .main h3 {
+            color: #eee;
+        }
+        .product-list {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .product-list th, .product-list td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        .product-list th {
+            background-color: #555;
+        }
+        .product-list td {
+            background-color: #444;
+        }
+        .product-actions button {
+            background-color: blue;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-actions button:hover {
+            background-color: rgb(240, 17, 17);
+        }
+        .form-container {
+            margin-top: 20px;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: rgb(240, 17, 17);
+        }
+        .form-container input[type="file"] {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>ADMIN DASHBOARD</h2>
+            <ul>
+                <li><a href="admin.html">Home</a></li>
+                <li><a href="manage.html">Manage Users</a></li>
+                <li><a href="product.html">Manage Products</a></li>
+                <li><a href="manageOrder.html">Manage Orders</a></li>
+                <li><a href="login.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>Manage Products</h3>
+            <table class="product-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>SPEAKER</td>
+                        <td>TSH 25,000/=</td>
+                        <td>power: 10watt</td>
+                        <td><img src="product/1.jpg" alt="Product 1" width="50"></td>
+                        <td class="product-actions">
+                            <button class="delete">Delete</button>
+                            <button class="update">Update</button>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+            <div class="form-container">
+                <h3>Add New Product</h3>
+                <form id="create-product-form">
+                    <input type="text" id="new-product-name" placeholder="Product Name" required>
+                    <input type="number" id="new-product-price" placeholder="Price" required>
+                    <textarea id="new-product-description" placeholder="Description" required></textarea>
+                    <input type="file" id="new-product-image" accept="image/*" required>
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+
+            <div class="form-container">
+                <h3>Update Product</h3>
+                <form id="update-product-form">
+                    <input type="hidden" id="update-product-id">
+                    <input type="text" id="update-product-name" placeholder="Product Name" required>
+                    <input type="number" id="update-product-price" placeholder="Price" required>
+                    <textarea id="update-product-description" placeholder="Description" required></textarea>
+                    <input type="file" id="update-product-image" accept="image/*">
+                    <button type="submit">Update Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const createForm = document.getElementById('create-product-form');
+            const updateForm = document.getElementById('update-product-form');
+            
+            createForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Product added successfully!');
+            });
+
+            updateForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Product updated successfully!');
+            });
+
+            const deleteButtons = document.querySelectorAll('.delete');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Product deleted successfully!');
+                });
+            });
+
+            const updateButtons = document.querySelectorAll('.update');
+            updateButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    document.getElementById('update-product-id').value = row.cells[0].textContent;
+                    document.getElementById('update-product-name').value = row.cells[1].textContent;
+                    document.getElementById('update-product-price').value = row.cells[2].textContent;
+                    document.getElementById('update-product-description').value = row.cells[3].textContent;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+.header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.theme-toggle {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: white;
+}
